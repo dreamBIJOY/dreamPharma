@@ -18,7 +18,7 @@ function Products({categorie}) {
 
 
 
-  const visibleProducts = categorieByProducts.slice(0, 6);
+  // const visibleProducts = categorieByProducts.slice(0, 6);
 
  
   return (

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function Categories() {
+function Categories({categorieName}) {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     fetch("/categories.json")
@@ -19,7 +19,7 @@ function Categories() {
   </div>
     <div className="grid grid-cols-3 gap-5 mt-5">
         {categories.map((category, index) => (
-          <div key={index} className="justify-center place-items-center cursor-pointer">
+          <div onClick={() => categorieName(category)} key={index} className="justify-center place-items-center cursor-pointer">
             <img
               className="w-[70px]"
               src={category.icon}
@@ -40,7 +40,7 @@ function Categories() {
       <div className="hidden md:block">
         <div className="flex flex-col gap-6 mt-4 p-5">
           {categories.map((categorie, index) => (
-            <div key={index}>
+            <div onClick={() => categorieName(categorie)} key={index}>
               <div className="flex items-center gap-2 cursor-pointer">
                 <img className="w-[50px]" src={categorie.icon} alt="" />
                 <h1 className="text-xl font-semibold">{categorie.categorie}</h1>

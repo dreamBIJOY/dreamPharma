@@ -12,7 +12,7 @@ import 'swiper/css/pagination';
 function Hero() {
   return (
     <div>
-        <div className='w-10/12 mx-auto'>
+        <div className='w-10/12 mx-auto py-5'>
             <div>
             <Swiper
         spaceBetween={30}
@@ -27,10 +27,10 @@ function Hero() {
         modules={[Pagination, Autoplay]}
         className="mySwiper"
       >
-        <SwiperSlide><img className='rounded-2xl' src={HeroImageOne} alt="" /></SwiperSlide>
-        <SwiperSlide><img className='rounded-2xl' src={HeroImageTwo} alt="" /></SwiperSlide>
-        <SwiperSlide><img className='rounded-2xl' src={HeroImageThree} alt="" /></SwiperSlide>
-        <SwiperSlide><img className='rounded-2xl' src={HeroImageFour} alt="" /></SwiperSlide>
+        <SwiperSlide className='rounded-2xl'><img className='rounded-2xl' src={HeroImageOne} alt="" /></SwiperSlide>
+        <SwiperSlide className='rounded-2xl'><img className='rounded-2xl' src={HeroImageTwo} alt="" /></SwiperSlide>
+        <SwiperSlide className='rounded-2xl'><img className='rounded-2xl' src={HeroImageThree} alt="" /></SwiperSlide>
+        <SwiperSlide className='rounded-2xl'><img className='rounded-2xl' src={HeroImageFour} alt="" /></SwiperSlide>
        
       </Swiper>
             </div>

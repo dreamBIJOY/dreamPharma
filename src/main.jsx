@@ -14,6 +14,7 @@ import CartPage from './Pages/Cart Page/CartPage'
 import LoginPage from './Pages/Login Page/LoginPage'
 import SignUpPage from './Pages/SignUp Page/SignUpPage'
 import ProductDetails from './Pages/Product Details/ProductDetails'
+import CategorieDetails from './Pages/Categorie Details/CategorieDetails'
 
 
 const router = createBrowserRouter([
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUpPage/>,
+      },
+      {
+        path: "/categorie-by-product/:id",
+        element: <CategorieDetails/>,
       },
       
     ]
