@@ -13,6 +13,8 @@ import ContactPage from './Pages/Contact Page/ContactPage'
 import CartPage from './Pages/Cart Page/CartPage'
 import LoginPage from './Pages/Login Page/LoginPage'
 import SignUpPage from './Pages/SignUp Page/SignUpPage'
+import ProductDetails from './Pages/Product Details/ProductDetails'
+
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/shop",
         element: <ShopPage/>,
+      },
+      {
+        path: "/product/:id",
+        element: <ProductDetails/>,
       },
       {
         path: "/doctors",

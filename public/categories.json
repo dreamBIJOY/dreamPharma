@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "categorie": "Baby",
+    "icon": "https://i.imghippo.com/files/UiB3803xDA.jpg"
+  },
+  {
+    "id": 2,
+    "categorie": "Beauty",
+    "icon": "https://i.imghippo.com/files/oEX5140BY.jpg"
+  },
+  {
+    "id": 3,
+    "categorie": "Grocery",
+    "icon": "https://i.imghippo.com/files/FVPV3897tKI.jpg"
+  },
+  {
+    "id": 4,
+    "categorie": "Health Topics",
+    "icon": "https://i.imghippo.com/files/qeoS4157fs.jpg"
+  },
+  {
+    "id": 5,
+    "categorie": "Herbs",
+    "icon": "https://i.imghippo.com/files/ATg7710mA.jpg"
+  },
+  {
+    "id": 6,
+    "categorie": "Medicines",
+    "icon": "https://i.imghippo.com/files/WpM8266QY.jpg"
+  },
+  {
+    "id": 7,
+    "categorie": "Personal Care",
+    "icon": "https://i.imghippo.com/files/kRez1026bGk.jpg"
+  },
+  {
+    "id": 8,
+    "categorie": "Pets",
+    "icon": "https://i.imghippo.com/files/EhoC1461a.jpg"
+  },
+  {
+    "id": 9,
+    "categorie": "Protein",
+    "icon": "https://i.imghippo.com/files/pJIm8023iZk.jpg"
+  },
+  {
+    "id": 10,
+    "categorie": "Sports Nutrition",
+    "icon": "https://i.imghippo.com/files/yuai8824Ruc.jpg"
+  },
+  {
+    "id": 11,
+    "categorie": "Supplements",
+    "icon": "https://i.imghippo.com/files/qqyf5300Ffg.jpg"
+  },
+  {
+    "id": 12,
+    "categorie": "Vitamins",
+    "icon": "https://i.imghippo.com/files/vHV1775aUQ.jpg"
+  }
+]

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Logo from '../../../public/Image/Logo.png'
 import { Link } from 'react-router-dom'
 import { FiShoppingBag } from "react-icons/fi";
@@ -10,25 +10,40 @@ import { IoCloseOutline } from "react-icons/io5";
 
 function Navbar() {
     const [menuName, setMenuName] = useState(false)
+    const menuRef = useRef(null)
     const handelMenuName = () => {
         setMenuName(!menuName)
     }
+    useState(() => {
+        const outSideClick = (data) => {
+            if(menuRef.current && !menuRef.current.contains(data.target)){
+                setMenuName(false)
+            };
+        };
+        document.addEventListener("click", outSideClick)
+        return() => {
+
+            document.removeEventListener("click", outSideClick)
+        }
+    },[])
     
     const [openUser, setOpenUser] = useState(false)
     const user = () => {
         setOpenUser(!openUser)
     }
+
+  
   return (
     <div className='py-4'>
         <div className='w-10/12 mx-auto flex items-center justify-between'>
 
         <div className='block md:hidden relative'>
-        {menuName ? (<IoCloseOutline onClick={handelMenuName} size={30} className="cursor-pointer" />) :
-        (<RiMenuUnfold3Line onClick={handelMenuName} size={30} className="cursor-pointer" />)}
+        {menuName ? (<IoCloseOutline onClick={handelMenuName}  size={30} className="cursor-pointer" />) :
+        (<RiMenuUnfold3Line onClick={handelMenuName}  size={30} className="cursor-pointer" />)}
         </div>
 
         <div>
-        <ul className={`${menuName ? "text-md text-gray-600 grid grid-cols-1 gap-4 bg-base-200 w-[160px] h-[300px] px-6 py-4 rounded-lg absolute top-[110px] left-6" : "hidden"}`}>
+        <ul className={`${menuName ? "text-md text-gray-600 grid grid-cols-1 gap-4 bg-base-200 w-[160px] h-[300px] px-6 py-4 rounded-lg absolute top-[125px] left-6 z-10" : "hidden"}`}>
                     <Link to="/">Home</Link>
                     <Link to="/shop">Shop</Link>
                     <Link to="/doctors">Doctors</Link>
@@ -66,7 +81,7 @@ function Navbar() {
             {openUser ? (<IoCloseOutline onClick={user} size={30} className='cursor-pointer'/>) :  (<CiMenuKebab onClick={user} size={30} className="cursor-pointer" />)}
             </div>
 
-            <div className={`${openUser ? "flex flex-col gap-4 w-[130px] h-[120px] bg-base-200 rounded-lg px-5 py-4 absolute right-6 top-[110px]" : "hidden"}`}>
+            <div className={`${openUser ? "flex flex-col gap-4 w-[130px] h-[120px] bg-base-200 rounded-lg px-5 py-4 absolute right-6 top-[125px] z-10" : "hidden"}`}>
                 <Link to="/login"><h1 className='text-lg'>Log In</h1></Link>
                 <Link to="/signup"><h1 className='text-lg'>Sign Up</h1></Link>
             </div>

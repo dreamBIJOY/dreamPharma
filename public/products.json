@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "categorie_id": 1,
+    "name": "Baby Diapers",
+    "price": 15.99,
+    "description": "Soft and absorbent baby diapers for ultimate comfort.",
+    "image": "https://i5.walmartimages.com/seo/Comfees-Baby-Baby-Diaper-Size-1-12-hour-protection-8-to-14-lbs-50-Count-1-Pack_22689c15-8934-48f6-9907-69e4ff27cb3f.40626763c4bb9d6bc5ee0910d6f33a85.jpeg",
+    "category": "Baby",
+    "rating": 4.5,
+    "featured": "New"
+  },
+  {
+    "id": 2,
+    "categorie_id": 1,
+    "name": "Baby Bottle",
+    "price": 9.99,
+    "description": "BPA-free baby bottle with anti-colic design.",
+    "image": "https://www.banglashoppers.com/media/catalog/product/cache/738ff9ddf2ab4727619980b59448fb42/8/7/8720689010252.jpg",
+    "category": "Baby",
+    "rating": 4.2,
+    "display_product": "New",
+    "featured": "New"
+  },
+  {
+    "id": 3,
+    "categorie_id": 1,
+    "name": "Baby Shampoo",
+    "price": 6.99,
+    "description": "Gentle tear-free shampoo for babies' sensitive skin.",
+    "image": "https://i5.walmartimages.com/seo/Johnson-s-Baby-Shampoo-with-Gentle-Tear-Free-Formula-1-7-fl-oz_14d3eee3-dcfa-446e-8c17-b7b74d728fe2.a362276449569f4252f1016fee6b3583.jpeg",
+    "category": "Baby",
+    "rating": 4.7
+  },
+  {
+    "id": 4,
+    "categorie_id": 1,
+    "name": "Baby Stroller",
+    "price": 129.99,
+    "description": "Lightweight and foldable baby stroller with safety harness.",
+    "image": "https://images-cdn.ubuy.qa/67d43ee11039cd51dd50f3d6-costway-foldable-baby-stroller-2-in-1.jpg",
+    "category": "Baby",
+    "rating": 4.8,
+    "display_product": "New",
+    "featured": "New"
+  },
+  {
+    "id": 5,
+    "categorie_id": 1,
+    "name": "Baby Clothes Set",
+    "price": 24.99,
+    "description": "Soft and cozy cotton baby clothes set.",
+    "image": "https://m.media-amazon.com/images/I/81OjV4exjEL.jpg",
+    "category": "Baby",
+    "rating": 4.6
+  },
+  {
+    "id": 6,
+    "categorie_id": 1,
+    "name": "Baby Teething Toy",
+    "price": 7.99,
+    "description": "Safe and non-toxic teething toy for babies.",
+    "image": "https://images-cdn.ubuy.co.id/634f4bfb34dcd3385e5a3015-towwi-baby-teething-toys-for-0-6-and.jpg",
+    "category": "Baby",
+    "rating": 4.3,
+    "display_product": "New",
+    "featured": "New"
+  },
+  {
+    "id": 7,
+    "categorie_id": 1,
+    "name": "Baby Walker",
+    "price": 49.99,
+    "description": "Adjustable baby walker with music and lights.",
+    "image": "https://i5.walmartimages.com/seo/Bright-Starts-Adjustable-Baby-Walker-with-Activity-Station-JuneBerry_4381f76f-daed-4cd1-b4ba-5cc9ffe949e4.7e383b42c944e0459fd04acd3baa5b54.jpeg",
+    "category": "Baby",
+    "rating": 4.4,
+    "featured": "New"
+  },
+  {
+    "id": 8,
+    "categorie_id": 1,
+    "name": "Baby Bath Tub",
+    "price": 29.99,
+    "description": "Comfortable and foldable baby bath tub.",
+    "image": "https://images.othoba.com/images/thumbs/0722330_deluxe-baby-bather-baby-bath-tub-summer-infant-washable-baby-bather.webp",
+    "category": "Baby",
+    "rating": 4.1,
+    "display_product": "New"
+  },
+  {
+    "id": 9,
+    "categorie_id": 1,
+    "name": "Baby High Chair",
+    "price": 79.99,
+    "description": "Durable high chair for babies with adjustable height.",
+    "image": "https://img.drz.lazcdn.com/static/bd/p/a79aed5f7cff04656f03f305b40f6b61.jpg_720x720q80.jpg",
+    "category": "Baby",
+    "rating": 4.9,
+    "featured": "New"
+  },
+  {
+    "id": 10,
+    "categorie_id": 1,
+    "name": "Baby Blanket",
+    "price": 19.99,
+    "description": "Soft and warm baby blanket made of organic cotton.",
+    "image": "https://images.othoba.com/images/thumbs/0676977_baby-sleeping-blanket-baby-sleeping-bag-ultra-soft-fluffy-newborn-receiving-blanket-outdoor-windproo.webp",
+    "category": "Baby",
+    "rating": 4.5
+  }
+]
