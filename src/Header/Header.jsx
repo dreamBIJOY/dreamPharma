@@ -6,7 +6,7 @@ function Header() {
   return (
     <>
     <TopSection/>
-    <div className='sticky top-0 z-10 bg-white shadow-xl'>
+    <div className='sticky top-0 z-20 bg-white shadow-xl'>
     <Navbar/>
     </div>
     </>

@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 import { CiFilter } from "react-icons/ci";
+import { IoCloseOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 function BestSellingProducts() {
   const [products, setProducts] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const intervalRef = useRef(null); 
+  const intervalRef = useRef(null);
   const itemsPerPage = 4;
 
   useEffect(() => {
@@ -14,9 +15,24 @@ function BestSellingProducts() {
       .then((items) => setProducts(items));
   }, []);
 
-  const bestSellingProducts = products.filter(
-    (product) => product.featured === "Best Seller"
-  );
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    fetch('/categories.json')
+      .then(res => res.json())
+      .then(data => setCategories(data));
+  }, []);
+
+  const [categoriesName, setCategoriesName] = useState(null);
+
+  const handleCategorySelect = (data) => {
+    setCategoriesName(data.categorie);
+  };
+
+  const bestSellingProducts = products.filter((product) => {
+    const isBestSeller = product.featured === "Best Seller";
+    const inCategory = categoriesName && categoriesName !="All" ?  product.category === categoriesName : true;
+    return isBestSeller && inCategory;
+  });
 
   const totalItems = bestSellingProducts.length;
 
@@ -37,8 +53,13 @@ function BestSellingProducts() {
     if (totalItems > itemsPerPage) {
       startAutoSlide();
     }
-    return () => clearInterval(intervalRef.current); 
+    return () => clearInterval(intervalRef.current);
   }, [totalItems]);
+
+  useEffect(() => {
+    setCurrentIndex(0);
+    resetAutoSlide();
+  }, [categoriesName]);
 
   const handleNext = () => {
     setCurrentIndex((prev) =>
@@ -59,38 +80,77 @@ function BestSellingProducts() {
     currentIndex + itemsPerPage
   );
 
+  const [isOpenCaterories, setIsOpenCategories] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpenCategories(!isOpenCaterories);
+  };
+
   return (
     <div className="py-10 relative">
       <div className="w-10/12 mx-auto">
-       
         <div className="mt-3 md:mt-6">
           <div className="flex items-center justify-between">
-            <Link to="/"><h1 className="text-md md:text-2xl font-semibold text-green-700">
-              Best Selling <span className="text-gray-700">Products</span>
-            </h1></Link>
-            <Link to="/shop"><h1 className="text-md md:text-4xl font-semibold text-gray-700">
-              <CiFilter />
-            </h1></Link>
+            <Link to="/">
+              <h1 className="text-md md:text-2xl font-semibold text-green-700">
+                Best Selling <span className="text-gray-700">Products</span>
+              </h1>
+            </Link>
+            <div className="relative">
+              {isOpenCaterories ? (
+                <IoCloseOutline
+                  onClick={toggleMenu}
+                  className="text-md md:text-4xl font-semibold text-gray-700 cursor-pointer"
+                />
+              ) : (
+                <CiFilter
+                  onClick={toggleMenu}
+                  className="text-md md:text-4xl font-semibold text-gray-700 cursor-pointer"
+                />
+              )}
+            </div>
           </div>
 
-         
           <button
-            className="absolute md:left-22 top-[60%] md:top-[65%] transform -translate-y-1/2  bg-[#008236] text-white px-3 py-2 cursor-pointer rounded-full"
+            className="absolute md:left-22 top-[60%] md:top-[65%] transform -translate-y-1/2 bg-[#008236] text-white px-3 py-2 cursor-pointer rounded-full"
             onClick={handlePrev}
           >
             ◀
           </button>
           <button
-            className="absolute md:right-24 top-[60%] md:top-[65%] transform -translate-y-1/2  bg-[#008236] text-white px-3 py-2 cursor-pointer rounded-full"
+            className="absolute md:right-24 top-[60%] md:top-[65%] transform -translate-y-1/2 bg-[#008236] text-white px-3 py-2 cursor-pointer rounded-full"
             onClick={handleNext}
           >
             ▶
           </button>
 
+          <div
+            className={`${
+              isOpenCaterories ? "absolute z-10 right-40 top-[132px]" : "hidden"
+            }`}
+          >
+            <div className="w-[250px] h-[870px] bg-base-200 p-6 shadow-2xl border-2 border-gray-300">
+              {categories.map((categorie, index) => (
+                <div key={index} className="mb-4">
+                  <div
+                    onClick={() => handleCategorySelect(categorie)}
+                    className={`flex items-center gap-2 cursor-pointer p-2 rounded-md ${
+                      categoriesName === categorie.categorie
+                        ? "bg-green-200"
+                        : ""
+                    }`}
+                  >
+                    <img className="w-[18%]" src={categorie.icon} alt="" />
+                    <h1 className="text-lg">{categorie.categorie}</h1>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 ml-9 md:ml-0 md:grid-cols-4 mt-8 gap-4 transition-all duration-500 ease-in-out">
             {visibleProducts.map((product, index) => (
               <div className="mb-4" key={index}>
-            
                 <div className="group cursor-pointer w-[250px] h-[420px] md:w-[345px] md:h-[500px] p-6 rounded-lg bg-base-100 shadow-sm border border-gray-200 border-b-10 border-b-green-700">
                   <div className="flex justify-center place-items-center relative">
                     {product.featured && (
@@ -125,8 +185,6 @@ function BestSellingProducts() {
                       </button>
                     </Link>
 
-                   
-
                     <button className="btn w-[100px] h-[25px] md:w-[150px] md:h-[50px] text-[10px] md:text-lg rounded-lg border-none bg-[#008236] text-white md:opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                       Add To Cart
                     </button>
@@ -135,7 +193,6 @@ function BestSellingProducts() {
               </div>
             ))}
           </div>
-
         </div>
       </div>
     </div>

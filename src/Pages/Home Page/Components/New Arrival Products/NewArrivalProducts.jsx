@@ -1,9 +1,11 @@
 
 import React, { useEffect, useState } from "react";
 import { CiFilter } from "react-icons/ci";
+import { IoCloseOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 function NewArrivalProducts() {
+
     const [products, setProducts] = useState([])
     useEffect(() => {
         fetch('/products.json')
@@ -11,7 +13,32 @@ function NewArrivalProducts() {
         .then(data => setProducts(data))
     },[])
 
-    const newArrivalProducts = products.filter(product => product.featured === "New")
+    const [categories, setCategories] = useState([])
+    useEffect(()=>{
+      fetch('/categories.json')
+      .then(res => res.json())
+      .then(data => setCategories(data)
+      )
+    },[])
+
+    const [isOpenCaterories, setIsOpenCategories] = useState(false)
+
+    const toggleMenu = () => {
+      setIsOpenCategories(!isOpenCaterories)
+    }
+
+    const [categoriesName, setCategoriesName] = useState(null)
+    const categorieName = (data) => {
+      setCategoriesName(data.categorie);
+      
+    }
+
+    const newArrivalProducts = products.filter(product => {
+      const isNew = product.featured === "New";
+      const inCategory = categoriesName && categoriesName !='All' ? product.category === categoriesName : true;
+      return isNew && inCategory;
+    });
+    
 
   return (
     <div>
@@ -27,11 +54,26 @@ function NewArrivalProducts() {
                     <Link to="/"><h1 className="text-md md:text-2xl font-semibold text-green-700">
                       New Arrival <span className="text-gray-700">Products</span>
                     </h1></Link>
-                    <Link to="/shop"><h1 className="text-md md:text-4xl font-semibold text-gray-700">
-                      <CiFilter />
-                    </h1></Link>
+                   <div className="relative">
+                   {isOpenCaterories ? (<IoCloseOutline onClick={toggleMenu} className="text-md md:text-4xl font-semibold text-gray-700 cursor-pointer" />) : (<CiFilter onClick={toggleMenu} className="text-md md:text-4xl font-semibold text-gray-700 cursor-pointer"/>) }
+                   </div>
                   </div>
 
+                 <div className={`${isOpenCaterories ? "absolute right-40 z-10 top-[887px]" : "hidden"}`}>
+                 <div className="w-[250px] h-[720px] bg-base-200 p-6 shadow-2xl border-2 border-gray-300">
+                    {categories.map((categorie, index) => (
+                      <div key={index} className="mb-4">
+                        <div onClick={()=> categorieName(categorie)} className={` flex items-center gap-2 cursor-pointer ${
+                          categoriesName === categorie.categorie ? " bg-green-200" : ""
+                        }`}>
+                          <img className="w-[18%]" src={categorie.icon} alt="" />
+                          <h1 className="text-lg ">{categorie.categorie}</h1>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                 </div>
+                  
                <div className="grid grid-cols-1 ml-9 md:ml-0 md:grid-cols-4 mt-8 gap-4 transition-all duration-500 ease-in-out">
                    {newArrivalProducts.map((product, index) => (
                      <div className="mb-4" key={index}>
